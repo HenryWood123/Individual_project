@@ -4,6 +4,7 @@ import java.io.*;
 public class main {
     String start_city = "";
     String end_city = "";
+//    attempts to read from input file
     public static void main(String[] args) {
         try {
             Scanner sc = new Scanner(System.in);
@@ -26,13 +27,14 @@ public class main {
         HashSet<Node> explored = new HashSet<>();
         data = Airports.reader().getAirport_name();
 
+//        runs while there is a node in the frontier
         while (!frontier.isEmpty()) {
             node = frontier.poll();
             explored.add(node.getState());
             System.out.println("removed: " + node.getState());
             String state = node.setState();
             ArrayList<String> Routes = new ArrayList<>();
-
+// goal test
             if (state == end_city){
                 System.out.println("found");
                 return node.getSolution_path();
